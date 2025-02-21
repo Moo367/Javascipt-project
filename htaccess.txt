@@ -1,1 +1,0 @@
-DirectoryIndex select-device.html
