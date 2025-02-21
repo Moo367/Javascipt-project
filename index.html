@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Baklava Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="title">Baklava Clicker</div>
+        <nav>
+            <ul class="menu-bar">
+                <li class="nav-item"><a href="#">test 1</a></li>
+                <li class="nav-item"><a href="#">test 2</a></li>
+                <li class="nav-item"><a href="#">test 3</a></li>
+                <li class="nav-item"><a href="#" id="reset">reset</a></li>
+                <li class="nav-item"><a href=" ">      </a></li>
+                <li class="nav-item"><a href=" ">      </a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div id="cookie-container">
+    <img id="cookie" src="baklava.png" alt="Baklava">
+</div>
+
+<!-- Scorebord -->
+<div id="scoreboard">
+    <div id="points">Punten: 0</div>
+    <div id="highscore">Highscore: 0</div>
+</div>
+
+<!-- Winkel -->
+<div id="shop">
+    <h2>Winkel</h2>
+    <div id="units"></div>
+    <div id="upgrades"></div>
+</div>
+
+<!-- Aankopen -->
+<div id="purchases">
+    <h3>Aankopen</h3>
+    <ul id="purchases-list"></ul>
+</div>
+
+<div id="background-baklavas"></div> <!-- Container voor achtergrond baklavas -->
+
+<!-- Pop-up modal -->
+<div id="resetModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <p>Weet je zeker dat je de score wilt resetten?</p>
+        <button id="confirmReset">Ja</button>
+        <button id="cancelReset">Nee</button>
+    </div>
+</div>
+
+<script src="game.js"></script>
+<script src="shop.js"></script>
+<script src="disable-zoom.js"></script>
+<script src="reset.js"></script>
+</body>
+</html>

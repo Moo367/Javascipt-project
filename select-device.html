@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baklava Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffebbb, #d1975b);
+            font-family: 'Caveat', cursive;
+            text-align: center;
+        }
+
+        .device-selection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .device {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .device img {
+            width: 250px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .device img:hover {
+            transform: scale(1.1);
+        }
+
+        .device p {
+            margin-top: 10px;
+            font-size: 24px;
+            color: #774936;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+        p-sd {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<h1>Selecteer je apparaat</h1>
+<div class="device-selection">
+    <div class="device" onclick="window.location.href='loading.html'">
+        <img src="pc.png" alt="PC">
+        <p-sd>PC</p-sd>
+    </div>
+    <div class="device" onclick="window.location.href='phoneindex.html'">
+        <img src="phone.png" alt="Phone">
+        <p-sd>Telefoon</p-sd>
+    </div>
+</div>
+</body>
+</html>

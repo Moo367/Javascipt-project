@@ -1,0 +1,314 @@
+/* Algemene stijl */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffebbb, #d1975b);
+    font-family: 'Caveat', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Header */
+.header-container {
+    width: 100%;
+    background: #774936;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.title {
+    font-size: 32px;
+    color: #ffebbb;
+    margin-right: auto;
+    text-align: center; /* Center the title */
+}
+
+/* Menubalk */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the menu items */
+}
+
+.menu-bar .nav-item {
+    margin-left: 20px;
+}
+
+.menu-bar li {
+    margin: 0;
+}
+
+.menu-bar a {
+    text-decoration: none;
+    color: #ffebbb;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu-bar a:hover {
+    color: #ff6347;
+}
+
+/* Cookie */
+#cookie-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+}
+
+#cookie {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 10px rgba(255, 200, 0, 0.5));
+    transition: transform 0.05s ease-in-out, filter 0.05s ease-in-out;
+}
+
+.cookie-clicked {
+    animation: clickAnimation 0.1s ease-in-out;
+}
+
+@keyframes clickAnimation {
+    0% { transform: scale(1); filter: drop-shadow(0px 0px 10px rgba(255, 200, 0, 0.5)); }
+    50% { transform: scale(0.9); filter: drop-shadow(0px 0px 20px rgba(255, 200, 0, 0.8)); }
+    100% { transform: scale(1); filter: drop-shadow(0px 0px 10px rgba(255, 200, 0, 0.5)); }
+}
+
+/* Scorebord */
+#scoreboard {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 25px 30px;
+    border-radius: 12px;
+    font-size: 24px;
+    color: #333;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Winkel */
+#shop {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 200px;
+}
+
+#shop h2 {
+    color: #774936;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#units, #upgrades {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the shop items */
+}
+
+#shop button {
+    background-color: #774936;
+    color: #ffebbb;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 5px 0;
+}
+
+#shop button:hover {
+    background-color: #5a382a;
+}
+
+#shop p {
+    color: #774936;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Aankopen */
+#purchases {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: #333;
+    width: 200px;
+    text-align: left;
+}
+
+#purchases h3 {
+    color: #774936;
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    text-align: center; /* Center the purchases title */
+}
+
+#purchases-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#purchases-list li {
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress {
+    height: 10px;
+    background-color: #774936;
+    width: 0;
+}
+
+/* Achtergrond baklavas */
+#background-baklavas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-baklava {
+    position: absolute;
+    opacity: 0.3;
+    filter: blur(3px);
+    animation: rise 5s linear forwards;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0); opacity: 0.3; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Pop-up modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 12px;
+    animation: zoomIn 0.5s;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes zoomOut {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+
+.zoom-out {
+    animation: zoomOut 0.5s forwards;
+}
+
+.modal-content p {
+    font-size: 20px;
+}
+
+.modal-content button {
+    background-color: #774936;
+    color: #ffebbb;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #5a382a;
+}
