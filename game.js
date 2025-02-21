@@ -4,11 +4,10 @@ class Player {
         this.highscore = 0;
         this.producers = 0;
         this.producerCost = 50;
-        this.producerRate = 1;
-        this.clickValue = 1;
-        this.purchases = [];
+        this.producerRate = 1; // Points per second per producer
+        this.clickValue = 1; // Points per click
+        this.purchases = []; // Array to keep track of purchases
         this.loadHighscore();
-        this.baklavaClicks = 0;
     }
 
     addPoints(amount) {
@@ -40,25 +39,6 @@ class Player {
             this.highscore = parseInt(savedHighscore, 10);
         }
         this.updateHighscoreDisplay();
-    }
-
-    addBackgroundBaklava() {
-        const backgroundContainer = document.getElementById('background-baklavas');
-        const baklava = document.createElement('img');
-        baklava.src = 'baklava.png';
-        baklava.classList.add('background-baklava');
-
-        const size = Math.random() * 40 + 80;
-        baklava.style.width = `${size}px`;
-        const x = Math.random() * (window.innerWidth - size);
-        baklava.style.left = `${x}px`;
-        baklava.style.bottom = `-100px`;
-
-        backgroundContainer.appendChild(baklava);
-
-        baklava.addEventListener('animationend', () => {
-            backgroundContainer.removeChild(baklava);
-        });
     }
 
     addPurchase(name) {
@@ -96,9 +76,7 @@ const player = new Player();
 const cookie = document.getElementById('cookie');
 
 cookie.addEventListener('click', () => {
-    player.baklavaClicks++;
     player.addPoints(player.clickValue);
-    player.addBackgroundBaklava();
     cookie.classList.remove('cookie-clicked');
     void cookie.offsetWidth;
     cookie.classList.add('cookie-clicked');

@@ -3,10 +3,12 @@ class Shop {
         this.player = player;
         this.units = [
             { name: 'Eenheid', cost: 50, rate: 1 },
+            // Voeg hier meer eenheden toe indien gewenst
         ];
         this.upgrades = [
             { name: 'Klik Upgrade', cost: 100, multiplier: 2, type: 'click' },
             { name: 'Prod. Upgrade', cost: 200, multiplier: 2, type: 'production' },
+            // Voeg hier meer upgrades toe indien gewenst
         ];
         this.init();
     }
@@ -44,8 +46,8 @@ class Shop {
             this.player.points -= unit.cost;
             this.player.producers++;
             this.player.producerRate += unit.rate;
-            unit.cost = Math.floor(unit.cost * 1.15);
-            this.player.addPurchase(unit.name);
+            unit.cost = Math.floor(unit.cost * 1.15); // Verhoog de kosten voor de volgende aankoop
+            this.player.addPurchase(unit.name); // Add the purchase to the player's list
             this.player.updatePointsDisplay();
             this.renderUnits();
         }
@@ -60,8 +62,8 @@ class Shop {
             } else if (upgrade.type === 'production') {
                 this.player.producerRate *= upgrade.multiplier;
             }
-            upgrade.cost = Math.floor(upgrade.cost * 2);
-            this.player.addPurchase(upgrade.name);
+            upgrade.cost = Math.floor(upgrade.cost * 2); // Verhoog de kosten voor de volgende aankoop
+            this.player.addPurchase(upgrade.name); // Add the purchase to the player's list
             this.player.updatePointsDisplay();
             this.renderUpgrades();
         }
