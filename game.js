@@ -6,7 +6,7 @@ class Player {
         this.producerCost = 50;
         this.producerRate = 1; // Points per second per producer
         this.clickValue = 1; // Points per click
-        this.purchases = []; // Array to keep track of purchases
+        this.purchases = []; // Array to keep track 
         this.loadHighscore();
     }
 
@@ -55,7 +55,7 @@ class Player {
         const purchasesList = document.getElementById('purchases-list');
         purchasesList.innerHTML = '';
         this.purchases.forEach(purchase => {
-            const progressPercentage = (purchase.quantity / 100) * 100; // Calculate the progress percentage based on 100 units
+            const progressPercentage = (purchase.quantity / 100) * 100; 
             const listItem = document.createElement('li');
             listItem.innerHTML = `
                 <span>${purchase.name}: ${purchase.quantity}</span>

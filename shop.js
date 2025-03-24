@@ -2,75 +2,53 @@ class Shop {
     constructor(player) {
         this.player = player;
         this.units = [
-            { name: 'Eenheid', cost: 50, rate: 1 },
-            // Voeg hier meer eenheden toe indien gewenst
+            { name: 'Baklava Fabriek', cost: 50, rate: 1 },
+            { name: 'Baklava Winkel', cost: 100, rate: 2 },
+            { name: 'Baklava Restaurant', cost: 200, rate: 3 },
+            { name: 'Baklava Keten', cost: 400, rate: 4 },
+            { name: 'Baklava Imperium', cost: 800, rate: 5 }
         ];
         this.upgrades = [
             { name: 'Klik Upgrade', cost: 100, multiplier: 2, type: 'click' },
-            { name: 'Prod. Upgrade', cost: 200, multiplier: 2, type: 'production' },
-            // Voeg hier meer upgrades toe indien gewenst
+            { name: 'Prod. Upgrade', cost: 200, multiplier: 2, type: 'production' }
         ];
         this.init();
     }
 
     init() {
-        this.renderUnits();
-        this.renderUpgrades();
+        this.render('units', this.units, this.buyUnit.bind(this));
+        this.render('upgrades', this.upgrades, this.buyUpgrade.bind(this));
     }
 
-    renderUnits() {
-        const unitsContainer = document.getElementById('units');
-        unitsContainer.innerHTML = '<h3>Eenheden</h3>';
-        this.units.forEach((unit, index) => {
-            const unitButton = document.createElement('button');
-            unitButton.innerText = `${unit.name} (${unit.cost}p)`;
-            unitButton.addEventListener('click', () => this.buyUnit(index));
-            unitsContainer.appendChild(unitButton);
-        });
-    }
-
-    renderUpgrades() {
-        const upgradesContainer = document.getElementById('upgrades');
-        upgradesContainer.innerHTML = '<h3>Upgrades</h3>';
-        this.upgrades.forEach((upgrade, index) => {
-            const upgradeButton = document.createElement('button');
-            upgradeButton.innerText = `${upgrade.name} (${upgrade.cost}p)`;
-            upgradeButton.addEventListener('click', () => this.buyUpgrade(index));
-            upgradesContainer.appendChild(upgradeButton);
-        });
+    render(containerId, items, buyFunction) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = `<h3>${containerId === 'units' ? 'Eenheden' : 'Upgrades'}</h3>` +
+            items.map((item, index) => `<button onclick="shop.${buyFunction.name}(${index})">${item.name} (${item.cost}p)</button>`).join('');
     }
 
     buyUnit(index) {
-        const unit = this.units[index];
+        let unit = this.units[index];
         if (this.player.points >= unit.cost) {
             this.player.points -= unit.cost;
-            this.player.producers++;
             this.player.producerRate += unit.rate;
-            unit.cost = Math.floor(unit.cost * 1.15); // Verhoog de kosten voor de volgende aankoop
-            this.player.addPurchase(unit.name); // Add the purchase to the player's list
-            this.player.updatePointsDisplay();
-            this.renderUnits();
+            unit.cost = Math.floor(unit.cost * 1.15);
+            this.player.updateUI();
+            this.render('units', this.units, this.buyUnit.bind(this));
         }
     }
 
     buyUpgrade(index) {
-        const upgrade = this.upgrades[index];
+        let upgrade = this.upgrades[index];
         if (this.player.points >= upgrade.cost) {
             this.player.points -= upgrade.cost;
-            if (upgrade.type === 'click') {
-                this.player.clickValue *= upgrade.multiplier;
-            } else if (upgrade.type === 'production') {
-                this.player.producerRate *= upgrade.multiplier;
-            }
-            upgrade.cost = Math.floor(upgrade.cost * 2); // Verhoog de kosten voor de volgende aankoop
-            this.player.addPurchase(upgrade.name); // Add the purchase to the player's list
-            this.player.updatePointsDisplay();
-            this.renderUpgrades();
+            this.player[upgrade.type === 'click' ? 'clickValue' : 'producerRate'] *= upgrade.multiplier;
+            upgrade.cost = Math.floor(upgrade.cost * 1.15);
+            this.player.updateUI();
+            this.render('upgrades', this.upgrades, this.buyUpgrade.bind(this));
         }
     }
 }
 
-// Initieer de winkel bij het laden van de pagina
 window.addEventListener('load', () => {
-    const shop = new Shop(player);
+    window.shop = new Shop(player);
 });
